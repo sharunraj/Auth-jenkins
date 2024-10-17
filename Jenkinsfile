@@ -35,8 +35,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat "docker build -t springsecurity ."
-                bat "docker run -p 8090:8090 -d --name springsecurity springsecurity"
+                bat "docker build -t authentication-sr ."
+                bat "docker run -p 8090:8090 -d --name authentication-sr authentication-sr"
             }
         }
     }
