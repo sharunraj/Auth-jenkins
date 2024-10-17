@@ -12,7 +12,13 @@ pipeline {
                 git url: 'https://github.com/sharunraj/Auth-jenkins.git', branch: 'main'
             }
         }
-
+        stage("Pre-Steps"){
+            steps{
+                bat "docker stop springsecurity"
+                bat "docker rm -f springsecurity"
+                bat "docker rmi springsecurity"
+            }
+        }
         stage('Build') {
             steps {
                 bat "mvn clean install -DskipTests"
