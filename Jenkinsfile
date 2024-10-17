@@ -12,6 +12,7 @@ pipeline {
                 git url: 'https://github.com/sharunraj/Auth-jenkins.git', branch: 'main'
             }
         }
+//gitttttt
 //         stage("Pre-Steps"){
 //             steps{
 //
