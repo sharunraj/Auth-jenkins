@@ -12,19 +12,14 @@ pipeline {
                 git url: 'https://github.com/sharunraj/Auth-jenkins.git', branch: 'main'
             }
         }
-        stage("Pre-Steps"){
-            steps{
-                script{
-                def containerExists = sh(script: "docker ps -a -q -f name=springsecurity", returnStdout: true).trim()
-                if(containerExists){
-                    bat "docker stop springsecurity"
-                    bat "docker rm -f springsecurity"
-                    bat "docker rmi springsecurity"
-                }
-                }
-
-            }
-        }
+//         stage("Pre-Steps"){
+//             steps{
+//
+//                 bat "docker stop springsecurity"
+//                 bat "docker rm -f springsecurity"
+//                 bat "docker rmi springsecurity"
+//             }
+//         }
         stage('Build') {
             steps {
                 bat "mvn clean install -DskipTests"
