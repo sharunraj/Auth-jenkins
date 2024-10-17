@@ -14,9 +14,15 @@ pipeline {
         }
         stage("Pre-Steps"){
             steps{
-                bat "docker stop springsecurity"
-                bat "docker rm -f springsecurity"
-                bat "docker rmi springsecurity"
+                script{
+                def containerExists = sh(script: "docker ps -a -q -f name=springsecurity", returnStdout: true).trim()
+                if(containerExists){
+                    bat "docker stop springsecurity"
+                    bat "docker rm -f springsecurity"
+                    bat "docker rmi springsecurity"
+                }
+                }
+
             }
         }
         stage('Build') {
